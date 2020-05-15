@@ -31,14 +31,6 @@ socket.onmessage = (event) => {
     serverMessages.push(JSON.parse(event.data));
 };
 
-
-function gameLoop() {
-    processServerMessages();
-    draw();
-    processInputs();
-    sendClientMessage();
-}
-
 document.addEventListener("keydown", (event) => {
     switch (event.key.toLowerCase()) {
     case "w":

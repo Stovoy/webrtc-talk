@@ -62,16 +62,18 @@ export default class Presentation extends React.Component {
             Why this topic?
           </Heading>
           <AppearText>
-            Why not!
           </AppearText>
           <AppearText>
-            I think this stuff is super cool and want to share it
+            I think this stuff is super cool and want to share it!
           </AppearText>
           <AppearText>
-            I've learned it along the way of making some moderately popular web games of my own
+            I've learned it along the way of making some web games of my own
           </AppearText>
           <AppearText>
             Gaming has many extremely difficult and unique engineering problems
+          </AppearText>
+          <AppearText>
+            It's fun!
           </AppearText>
         </Slide>
         <Slide>
@@ -88,9 +90,9 @@ export default class Presentation extends React.Component {
           </AppearText>
         </Slide>
         <Slide>
-          <Text>
-            Minimal single-player game loop
-          </Text>
+          <Heading>
+            Minimal singleplayer game loop
+          </Heading>
           <Image width="50%" src={images.gameLoop}/>
           <AppearText>
             <CodeSnippet>processInputs()</CodeSnippet> reads client keyboard inputs
@@ -102,10 +104,8 @@ export default class Presentation extends React.Component {
             <CodeSnippet>draw()</CodeSnippet> renders the game
           </AppearText>
           <AppearText>
-            Run it 60 times a second and we've got a game!
+            Run it 60 times a second and we've got a game going!
           </AppearText>
-        </Slide>
-        <Slide>
         </Slide>
         <Slide>
           <Heading>
@@ -164,43 +164,43 @@ export default class Presentation extends React.Component {
           <AppearText>Client-side prediction</AppearText>
           <AppearText>Lag compensation</AppearText>
           <AppearText>Server reconciliation</AppearText>
-          <AppearText>We won't go into detail on these, as they are complicated</AppearText>
-          <AppearText>These are key to a smooth feeling fast paced game</AppearText>
+          <AppearText>We won't go into detail on these further, but they're all quite interesting</AppearText>
+          <AppearText>These solutions are key to a smooth-feeling, fast-paced game</AppearText>
         </Slide>
         <Slide>
           <Heading>
-            Not perfect solutions!
+            However - not perfect solutions!
           </Heading>
-          <AppearText>They're hacks that try to hide the lag from the player</AppearText>
+          <AppearText>They're tricks that try to hide the lag from the player</AppearText>
           <AppearText>If lag is bad enough, it will still feel terrible</AppearText>
           <AppearText>How can we make that bad lag less likely for players?</AppearText>
           <AppearText>Almost ready to introduce WebRTC...</AppearText>
-          <AppearText>But first - a history of UDP vs TCP for games</AppearText>
+          <AppearText>But first, a look into TCP vs UDP for gaming</AppearText>
         </Slide>
         <Slide>
           <Heading>
-            UDP vs TCP for gaming
+            TCP vs UDP for gaming
           </Heading>
           <AppearText>
             TCP: Reliable, ordered message stream
           </AppearText>
           <AppearText>
-            Dropped packets are retried, newer packets are delayed until old ones go through
+            Dropped packets are retried; newer packets are delayed until old ones go through
           </AppearText>
           <AppearText>
-            This is great for many things on the web, but retrying & delaying makes lag worse!
+            This is great for many things on the web, but retrying & delaying makes lag <b>worse</b>!
           </AppearText>
           <AppearText>
-            Playing on a poor WiFi connnection will feel awful because of dropped packets delaying all data
+            Playing on a poor WiFi connnection will feel awful because of dropped packets delaying new data
           </AppearText>
         </Slide>
         <Slide>
           <Heading>
-            UDP vs TCP for gaming
+            TCP vs UDP for gaming
           </Heading>
-          <AppearText>
+          <Text>
             UDP: Unreliable, unordered messages
-          </AppearText>
+          </Text>
           <AppearText>
             Dropped packets are not retried
           </AppearText>
@@ -208,12 +208,12 @@ export default class Presentation extends React.Component {
             New messages may arrive before old messages
           </AppearText>
           <AppearText>
-            All the safety of TCP is gone - but so are the slowdowns
+            All the reliability of TCP is gone - but so are the slowdowns
           </AppearText>
         </Slide>
         <Slide>
           <Heading>
-            UDP vs TCP for gaming
+            TCP vs UDP for gaming
           </Heading>
           <AppearText>
             Due to TCP's non time-critical nature, UDP is preferred for fast paced multiplayer games
@@ -252,6 +252,9 @@ export default class Presentation extends React.Component {
           <AppearText>
             Is all hope for real-time web games lost?
           </AppearText>
+          <AppearText>
+            Not yet...
+          </AppearText>
         </Slide>
         <Slide>
           <Heading>
@@ -278,10 +281,13 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>
-            Will this work? Does WebRTC use UDP?
+            Will this work? Does WebRTC support UDP?
           </Heading>
           <AppearText>
-            No, but it uses something we can make work just like it: <b>STCP</b>
+            No...
+          </AppearText>
+          <AppearText>
+            but it uses something we can make work just like it: <b>STCP!</b>
           </AppearText>
           <AppearText>
             STCP (Scalable TCP) is configurable
@@ -324,13 +330,13 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>
-            STUN? ICE?! What's all this?
+            STUN? ICE?!
           </Heading>
           <AppearText>
             STUN (Session Traversal Utilities for NAT) is a server that helps establish the connection with the peer
           </AppearText>
           <AppearText>
-            You can use a public STUN server, or run your lightweight STUN server easily
+            You can use a public STUN server, or run your own lightweight STUN server
           </AppearText>
           <AppearText>
             ICE (Interactive Connectivity Establishment) is the protocol to establish the connection
@@ -349,7 +355,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>
-            WebRTC code on the client
+            WebRTC code on the client, again
           </Heading>
           <AppearImage src={images.webrtcClient}/>
         </Slide>
@@ -358,18 +364,27 @@ export default class Presentation extends React.Component {
             On the server, those libraries do the heavy lifting
           </Text>
           <AppearText>
-            We can just listen almost as if using a websocket!
+            They implement the minimal WebRTC spec for unreliable data streams from a server
+          </AppearText>
+          <AppearText>
+            Using them, we can then write our code almost as easily as if using a websocket!
           </AppearText>
         </Slide>
         <Slide>
           <Heading>
-            That's all!
+            And we're done!
           </Heading>
           <AppearText>
             That's the basics of WebRTC, and how it may be the future of real-time browser games
           </AppearText>
           <AppearText>
-            Thanks for listening!
+            WebRTC is pretty new still (version 1.0 released 2 years ago), so most web games are not using it yet
+          </AppearText>
+          <AppearText>
+            But soon!
+          </AppearText>
+          <AppearText>
+            Thanks for listening
           </AppearText>
         </Slide>
       </Deck>
