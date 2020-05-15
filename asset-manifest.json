@@ -1,0 +1,18 @@
+{
+  "main.js": "/webrtc-talk/static/js/main.285c0f59.chunk.js",
+  "main.js.map": "/webrtc-talk/static/js/main.285c0f59.chunk.js.map",
+  "static/css/1.d1a4e84b.chunk.css": "/webrtc-talk/static/css/1.d1a4e84b.chunk.css",
+  "static/js/1.b9713776.chunk.js": "/webrtc-talk/static/js/1.b9713776.chunk.js",
+  "static/js/1.b9713776.chunk.js.map": "/webrtc-talk/static/js/1.b9713776.chunk.js.map",
+  "runtime~main.js": "/webrtc-talk/static/js/runtime~main.cde35aea.js",
+  "runtime~main.js.map": "/webrtc-talk/static/js/runtime~main.cde35aea.js.map",
+  "static/media/gameLoop.png": "/webrtc-talk/static/media/gameLoop.fccddc68.png",
+  "static/media/sendState.png": "/webrtc-talk/static/media/sendState.510e8244.png",
+  "static/media/clientServer.png": "/webrtc-talk/static/media/clientServer.6e85baa7.png",
+  "static/media/webrtcClient.png": "/webrtc-talk/static/media/webrtcClient.f5b35b80.png",
+  "static/media/server.png": "/webrtc-talk/static/media/server.22ce31b1.png",
+  "static/css/1.d1a4e84b.chunk.css.map": "/webrtc-talk/static/css/1.d1a4e84b.chunk.css.map",
+  "index.html": "/webrtc-talk/index.html",
+  "precache-manifest.9729deb6c5bd9196ef8a5309ba973fb1.js": "/webrtc-talk/precache-manifest.9729deb6c5bd9196ef8a5309ba973fb1.js",
+  "service-worker.js": "/webrtc-talk/service-worker.js"
+}
