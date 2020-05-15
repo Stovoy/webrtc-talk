@@ -1,0 +1,35 @@
+{
+  "name": "react-presentation",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://pages.github.cbhq.net/steve/secrets-presentation/",
+  "dependencies": {
+    "prop-types": "latest",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-hot-loader": "^4.12.18",
+    "redbox-react": "latest",
+    "spectacle": "^5.8.0",
+    "spectacle-scripts": "2.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}

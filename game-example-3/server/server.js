@@ -1,63 +1,28 @@
-const fastify = require('fastify')();
+websocket.on('connection', (conn) => {
+    let client = {
+        id: newId(),
+        conn: conn,
+    };
+    clients.add(client);
 
-fastify.register(require('fastify-ws'));
-
-let players = new Set();
-
-fastify.ready((err) => {
-    if (err) {
-        throw err;
-    }
-
-    console.log('Server started');
-
-    let id = 0;
-
-    fastify.ws.on('connection', (socket) => {
-        console.log('Client connected');
-        let player = {
-            id: id,
-            socket: socket,
-            x: 200, y: 200, horizontal: 0, vertical: 0, shooting: false, timeSinceLastShot: shootingDelay,
-        };
-        players.add(player);
-        id += 1;
-
-        socket.on('message', (message) => {
-            message = JSON.parse(message);
-            if (message.up !== undefined) {
-                if (message.up.horizontal === player.horizontal) {
-                    player.horizontal = 0;
-                }
-                if (message.up.vertical === player.vertical) {
-                    player.vertical = 0;
-                }
-                if (message.up.shooting === player.shooting) {
-                    player.shooting = false;
-                }
-            } else if (message.down !== undefined) {
-                if (message.down.horizontal !== undefined) {
-                    player.horizontal = message.down.horizontal;
-                }
-                if (message.down.vertical !== undefined) {
-                    player.vertical = message.down.vertical;
-                }
-                if (message.down.shooting !== undefined) {
-                    player.shooting = message.down.shooting;
-                }
-            }
-        });
-
-        socket.on('close', () => {
-            console.log('Client disconnected');
-            players.delete(player);
-        });
+    conn.on('message', (message) => {
+        client.processMessage(message);
     });
 
-    startGame();
+    conn.on('close', () => {
+        clients.delete(player);
+    });
 });
 
+function gameLoop() {
+    processInputs();
+    update();
+    sendStateToClients();
+}
+
 const tickTime = 1000 / 60;
+setInterval(gameLoop, tickTime);
+
 let speed = 5;
 
 let shootingDelay = 250;
